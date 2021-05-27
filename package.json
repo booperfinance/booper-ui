@@ -8,21 +8,22 @@
     "start": "next start"
   },
   "dependencies": {
+    "@chakra-ui/gatsby-plugin": "^2.0.0",
     "@chakra-ui/icons": "^1.0.13",
     "@chakra-ui/react": "^1.6.1",
     "@chakra-ui/system": "^1.6.5",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
     "@ethersproject/contracts": "^5.1.1",
     "@ethersproject/providers": "^5.1.2",
     "@fontsource/inter": "^4.3.0",
     "bignumber.js": "^9.0.1",
     "bnc-onboard": "^1.25.0",
-    "framer-motion": "^4",
-    "next": "10.2.0",
+    "framer-motion": "^4.1.16",
+    "next": "^10.2.0",
     "next-plausible": "^1.6.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "sass": "^1.32.12"
   },
   "devDependencies": {

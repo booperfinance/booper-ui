@@ -11,26 +11,27 @@ import { useWeb3 } from "../../helpers/web3";
 import { shortenAddress } from "../../helpers/utils";
 
 import abiErc20 from "../../abi/erc20.json";
+import abiBoop from "../../abi/boop.json";
 import { formatUnits } from "../../helpers/units";
 
-const YFI = "0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e";
-const WOOFY = "0xD0660cD418a64a1d44E9214ad8e459324D8157f1";
+const IDEX = "0x0856978F7fFff0a2471B4520E3521c4B3343e36f";
+const BOOP = "0x890E894F923CFa1Dad0E7da5AD37302b59000696";
 
 export default function Header() {
   const { active, activate, deactivate, account, pending, library } = useWeb3();
-  const [userBalanceYfi, setUserBalanceYfi] = useState(0);
-  const [userBalanceWoofy, setUserBalanceWoofy] = useState(0);
+  const [userBalanceIdex, setUserBalanceIdex] = useState(0);
+  const [userBalanceBoop, setuserBalanceBoop] = useState(0);
 
   useEffect(() => {
     if (active && library && account) {
-      const yfiContract = new Contract(YFI, abiErc20, library);
-      const woofyContract = new Contract(WOOFY, abiErc20, library);
+      const idexContract = new Contract(IDEX, abiErc20, library);
+      const booperContract = new Contract(BOOP, abiBoop, library);
 
-      yfiContract.balanceOf(account).then(setUserBalanceYfi);
-      woofyContract.balanceOf(account).then(setUserBalanceWoofy);
+      idexContract.balanceOf(account).then(setUserBalanceIdex);
+      booperContract.balanceOf(account).then(setuserBalanceBoop);
     } else {
-      setUserBalanceYfi(0);
-      setUserBalanceWoofy(0);
+      setUserBalanceIdex(0);
+      setuserBalanceBoop(0);
     }
   }, [active, library, account]);
 
@@ -43,9 +44,9 @@ export default function Header() {
   const displayBalance = useMemo(
     () =>
       userDisplayToken
-        ? `${formatUnits(userBalanceYfi, 18)} YFI`
-        : `${formatUnits(userBalanceWoofy, 9)} WOOFY`,
-    [userDisplayToken, userBalanceYfi, userBalanceWoofy]
+        ? `${formatUnits(userBalanceIdex, 18)} IDEX`
+        : `${formatUnits(userBalanceBoop, 9)} BOOP`,
+    [userDisplayToken, userBalanceIdex, userBalanceBoop]
   );
 
   return (
@@ -55,10 +56,10 @@ export default function Header() {
           <a>
             <HStack spacing={2}>
               <Text fontSize="5xl" fontWeight="extrabold">
-                woofy
+               Booper.finance
               </Text>
               <Center>
-                <Image src="/tokens/WOOFY.svg" width={32} height={32} />
+                <Image src="/tokens/BOOP.svg" width={64} height={64} />
               </Center>
             </HStack>
           </a>

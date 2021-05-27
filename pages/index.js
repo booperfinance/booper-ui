@@ -25,13 +25,13 @@ import { useWeb3 } from "../helpers/web3";
 import { formatUnits } from "../helpers/units";
 
 import abiErc20 from "../abi/erc20.json";
-import abiWoofy from "../abi/woofy.json";
+import abiBoop from "../abi/boop.json";
 
 import NumericInput from "../components/NumericInput";
 import { usePlausible } from "next-plausible";
 
-const YFI = "0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e";
-const WOOFY = "0xD0660cD418a64a1d44E9214ad8e459324D8157f1";
+const IDEX = "0x0856978F7fFff0a2471B4520E3521c4B3343e36f";
+const BOOP = "0x890E894F923CFa1Dad0E7da5AD37302b59000696";
 
 const TEN = new BigNumber(10);
 const MAX = new BigNumber(2).pow(256).minus(1);
@@ -44,43 +44,43 @@ export default function Home() {
   const plausible = usePlausible();
   const { active, account, library, provider } = useWeb3();
 
-  const [userBalanceYfi, setUserBalanceYfi] = useState(0);
-  const [userBalanceWoofy, setUserBalanceWoofy] = useState(0);
-  const [userAllowanceYfi, setUserAllowanceYfi] = useState(0);
+  const [userBalanceIdex, setUserBalanceIdex] = useState(0);
+  const [userBalanceBooper, setUserBalanceBooper] = useState(0);
+  const [userAllowanceIdex, setUserAllowanceIdex] = useState(0);
 
   const [isApproving, setIsApproving] = useState(false);
   const [isSwapping, setIsSwapping] = useState(false);
 
-  const yfi = useMemo(
+  const idex = useMemo(
     () => ({
-      name: "yearn.finance",
-      symbol: "YFI",
-      image: "/tokens/YFI.svg",
-      address: YFI,
+      name: "idex.io",
+      symbol: "IDEX",
+      image: "/tokens/IDEX.svg",
+      address: IDEX,
       decimals: 18,
-      balance: new BigNumber(userBalanceYfi.toString()),
-      allowance: new BigNumber(userAllowanceYfi.toString()),
+      balance: new BigNumber(userBalanceIdex.toString()),
+      allowance: new BigNumber(userAllowanceIdex.toString()),
     }),
-    [userBalanceYfi, userAllowanceYfi]
+    [userBalanceIdex, userAllowanceIdex]
   );
 
-  const woofy = useMemo(
+  const booper = useMemo(
     () => ({
-      name: "Woofy",
-      symbol: "WOOFY",
-      address: WOOFY,
-      image: "/tokens/WOOFY.svg",
+      name: "booper.finance",
+      symbol: "BOOP",
+      address: BOOP,
+      image: "/tokens/BOOP.svg",
       decimals: 12,
-      balance: new BigNumber(userBalanceWoofy.toString()),
+      balance: new BigNumber(userBalanceBooper.toString()),
       allowance: MAX,
     }),
-    [userBalanceWoofy]
+    [userBalanceBooper]
   );
 
-  const fromToken = useMemo(() => (isWrap ? yfi : woofy), [yfi, woofy, isWrap]);
+  const fromToken = useMemo(() => (isWrap ? idex : booper), [idex, booper, isWrap]);
   const toToken = useMemo(
-    () => (isUnwrap ? yfi : woofy),
-    [yfi, woofy, isUnwrap]
+    () => (isUnwrap ? idex : booper),
+    [idex, booper, isUnwrap]
   );
 
   const [value, setValue] = useState("");
@@ -96,17 +96,17 @@ export default function Home() {
 
   useEffect(() => {
     if (active && library && account) {
-      const yfiContract = new Contract(YFI, abiErc20, library);
-      const woofyContract = new Contract(WOOFY, abiErc20, library);
+      const idexContract = new Contract(IDEX, abiErc20, library);
+      const booperContract = new Contract(BOOP, abiErc20, library);
 
-      yfiContract.balanceOf(account).then(setUserBalanceYfi);
-      woofyContract.balanceOf(account).then(setUserBalanceWoofy);
+      idexContract.balanceOf(account).then(setUserBalanceIdex);
+      booperContract.balanceOf(account).then(setUserBalanceBooper);
 
-      yfiContract.allowance(account, WOOFY).then(setUserAllowanceYfi);
+      idexContract.allowance(account, BOOP).then(setUserAllowanceIdex);
     } else {
-      setUserBalanceYfi(0);
-      setUserBalanceWoofy(0);
-      setUserAllowanceYfi(0);
+      setUserBalanceIdex(0);
+      setUserBalanceBooper(0);
+      setUserAllowanceIdex(0);
     }
   }, [active, library, account, isApproving, isSwapping]);
 
@@ -116,7 +116,7 @@ export default function Home() {
   );
 
   const needsApproval = useMemo(
-    () => fromToken.symbol !== "WOOFY",
+    () => fromToken.symbol !== "BOOP",
     [active, input, fromToken]
   );
 
@@ -155,37 +155,37 @@ export default function Home() {
       .then(() => setIsApproving(false));
   }, [fromToken, toToken, library, account]);
 
-  const woof = useCallback(() => {
-    const woofyContract = new Contract(
-      woofy.address,
-      abiWoofy,
+  const boop = useCallback(() => {
+    const booperContract = new Contract(
+      booper.address,
+      abiBoop,
       library.getSigner(account)
     );
     setIsSwapping(true);
-    woofyContract.functions["woof(uint256)"](input.toFixed())
+    booperContract.functions["boop(uint256)"](input.toFixed())
       .catch(() => setIsSwapping(false))
       .then((tx) => tx.wait())
       .catch(() => setIsSwapping(false))
       .then(() => setIsSwapping(false));
-    plausible("Woof", { props: { amount: input.toFixed() } });
+    plausible("Boop", { props: { amount: input.toFixed() } });
   }, [fromToken, toToken, library, account, input]);
 
-  const unwoof = useCallback(() => {
-    const woofyContract = new Contract(
-      woofy.address,
-      abiWoofy,
+  const unboop = useCallback(() => {
+    const booperContract = new Contract(
+      booper.address,
+      abiBoop,
       library.getSigner(account)
     );
     setIsSwapping(true);
-    woofyContract.functions["unwoof(uint256)"](input.toFixed())
+    booperContract.functions["unboop(uint256)"](input.toFixed())
       .catch(() => setIsSwapping(false))
       .then((tx) => tx.wait())
       .catch(() => setIsSwapping(false))
       .then(() => setIsSwapping(false));
-    plausible("Unwoof", { props: { amount: input.toFixed() } });
-  }, [woofy, toToken, library, account, input]);
+    plausible("Unboop", { props: { amount: input.toFixed() } });
+  }, [booper, toToken, library, account, input]);
 
-  const swap = useMemo(() => (isWrap ? woof : unwoof), [isWrap, woof, unwoof]);
+  const swap = useMemo(() => (isWrap ? boop : unboop), [isWrap, boop, unboop]);
 
   const addToken = useCallback(
     (token) => {
@@ -199,7 +199,7 @@ export default function Home() {
                 address: token.address,
                 symbol: token.symbol,
                 decimals: token.decimals,
-                image: `https://woofy.finance/${token.image}`,
+                image: `https://booper.finance/${token.image}`,
               },
             },
           })
@@ -212,7 +212,7 @@ export default function Home() {
   return (
     <Box minH="100vh" color="white">
       <Head>
-        <title>woofy</title>
+        <title>booper</title>
       </Head>
       <Stack spacing={10}>
         <Header />
@@ -230,13 +230,13 @@ export default function Home() {
                   <Center>
                     <ButtonGroup isAttached>
                       <Button
-                        colorScheme="pink"
+                        colorScheme="purple"
                         fontSize="xl"
                         opacity={isWrap ? 0.8 : 0.4}
                         onClick={() => setPage("wrap")}
                         w={["32", "40"]}
                       >
-                        Woof
+                        Boop
                       </Button>
                       <Button
                         colorScheme="blue"
@@ -245,7 +245,7 @@ export default function Home() {
                         onClick={() => setPage("unwrap")}
                         w={["32", "40"]}
                       >
-                        Unwoof
+                        Unboop
                       </Button>
                     </ButtonGroup>
                   </Center>
@@ -361,7 +361,7 @@ export default function Home() {
                       isLoading={isSwapping}
                       onClick={swap}
                     >
-                      {isWrap ? "Woof" : "Unwoof"}
+                      {isWrap ? "Boop" : "Unboop"}
                     </Button>
                   </HStack>
                 </Stack>
@@ -377,18 +377,14 @@ export default function Home() {
                   <HStack wrap="wrap" spacing={0}>
                     <Box flexGrow={1}>
                       <Text>
-                        <Link href="https://matcha.xyz/markets/0xd0660cd418a64a1d44e9214ad8e459324d8157f1/ETH">
-                          🍵 Trade
-                        </Link>
-                        <span> / </span>
-                        <Link href="https://docs.yearn.finance/products/woofy">
-                          📃 Docs
+                        <Link href='https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x890E894F923CFa1Dad0E7da5AD37302b59000696'>
+                        🥞 Trade
                         </Link>
                       </Text>
                     </Box>
                     <Box>
                       <Text>
-                        by <Link href="https://yearn.finance">🔵</Link> with 💙
+                        by <Link href="https://yearn.finance">🔵</Link> and mak.eth with 💙
                       </Text>
                     </Box>
                   </HStack>

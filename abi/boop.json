@@ -1,0 +1,730 @@
+[
+{
+  "name": "Transfer",
+  "inputs": [
+    {
+      "name": "sender",
+      "type": "address",
+      "indexed": true
+    },
+    {
+      "name": "receiver",
+      "type": "address",
+      "indexed": true
+    },
+    {
+      "name": "value",
+      "type": "uint256",
+      "indexed": false
+    }
+  ],
+  "anonymous": false,
+  "type": "event"
+},
+{
+  "name": "Approval",
+  "inputs": [
+    {
+      "name": "owner",
+      "type": "address",
+      "indexed": true
+    },
+    {
+      "name": "spender",
+      "type": "address",
+      "indexed": true
+    },
+    {
+      "name": "value",
+      "type": "uint256",
+      "indexed": false
+    }
+  ],
+  "anonymous": false,
+  "type": "event"
+},
+{
+  "stateMutability": "nonpayable",
+  "type": "constructor",
+  "inputs": [
+    {
+      "name": "base_token",
+      "type": "address"
+    },
+    {
+      "name": "fee_bps",
+      "type": "uint256"
+    },
+    {
+      "name": "dao_fee_bps",
+      "type": "uint256"
+    }
+  ],
+  "outputs": []
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "name",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "string"
+    }
+  ],
+  "gas": 6006
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "symbol",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "string"
+    }
+  ],
+  "gas": 6036
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "decimals",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "uint256"
+    }
+  ],
+  "gas": 438
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "getRewardsEstimate",
+  "inputs": [
+    {
+      "name": "sender",
+      "type": "address"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "uint256"
+    }
+  ],
+  "gas": 28788
+},
+{
+  "stateMutability": "nonpayable",
+  "type": "function",
+  "name": "transfer",
+  "inputs": [
+    {
+      "name": "receiver",
+      "type": "address"
+    },
+    {
+      "name": "amount",
+      "type": "uint256"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "bool"
+    }
+  ],
+  "gas": 905539
+},
+{
+  "stateMutability": "nonpayable",
+  "type": "function",
+  "name": "transferFrom",
+  "inputs": [
+    {
+      "name": "sender",
+      "type": "address"
+    },
+    {
+      "name": "receiver",
+      "type": "address"
+    },
+    {
+      "name": "amount",
+      "type": "uint256"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "bool"
+    }
+  ],
+  "gas": 943190
+},
+{
+  "stateMutability": "nonpayable",
+  "type": "function",
+  "name": "approve",
+  "inputs": [
+    {
+      "name": "spender",
+      "type": "address"
+    },
+    {
+      "name": "amount",
+      "type": "uint256"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "bool"
+    }
+  ],
+  "gas": 38001
+},
+{
+  "stateMutability": "nonpayable",
+  "type": "function",
+  "name": "boop",
+  "inputs": [
+    {
+      "name": "amount",
+      "type": "uint256"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "bool"
+    }
+  ],
+  "gas": 643996
+},
+{
+  "stateMutability": "nonpayable",
+  "type": "function",
+  "name": "unboop",
+  "inputs": [
+    {
+      "name": "amount",
+      "type": "uint256"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "bool"
+    }
+  ],
+  "gas": 3730248
+},
+{
+  "stateMutability": "nonpayable",
+  "type": "function",
+  "name": "claim",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "bool"
+    }
+  ],
+  "gas": 793870
+},
+{
+  "stateMutability": "nonpayable",
+  "type": "function",
+  "name": "addToRewards",
+  "inputs": [
+    {
+      "name": "amount",
+      "type": "uint256"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "bool"
+    }
+  ],
+  "gas": 167680
+},
+{
+  "stateMutability": "nonpayable",
+  "type": "function",
+  "name": "changeSwapper",
+  "inputs": [
+    {
+      "name": "swapper",
+      "type": "address"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "bool"
+    }
+  ],
+  "gas": 38577
+},
+{
+  "stateMutability": "nonpayable",
+  "type": "function",
+  "name": "changeOwner",
+  "inputs": [
+    {
+      "name": "owner",
+      "type": "address"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "bool"
+    }
+  ],
+  "gas": 38182
+},
+{
+  "stateMutability": "nonpayable",
+  "type": "function",
+  "name": "changeDao",
+  "inputs": [
+    {
+      "name": "dao",
+      "type": "address"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "bool"
+    }
+  ],
+  "gas": 38637
+},
+{
+  "stateMutability": "nonpayable",
+  "type": "function",
+  "name": "changeFeeController",
+  "inputs": [
+    {
+      "name": "fee_controller",
+      "type": "address"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "bool"
+    }
+  ],
+  "gas": 38667
+},
+{
+  "stateMutability": "nonpayable",
+  "type": "function",
+  "name": "changeDaoFeeBPS",
+  "inputs": [
+    {
+      "name": "dao_fee_bps",
+      "type": "uint256"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "bool"
+    }
+  ],
+  "gas": 38189
+},
+{
+  "stateMutability": "nonpayable",
+  "type": "function",
+  "name": "changeTradeFeeBPS",
+  "inputs": [
+    {
+      "name": "fee_bps",
+      "type": "uint256"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "bool"
+    }
+  ],
+  "gas": 38219
+},
+{
+  "stateMutability": "payable",
+  "type": "fallback"
+},
+{
+  "stateMutability": "nonpayable",
+  "type": "function",
+  "name": "sendSwapperPayment",
+  "inputs": [
+    {
+      "name": "token",
+      "type": "address"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "bool"
+    }
+  ],
+  "gas": 178346
+},
+{
+  "stateMutability": "nonpayable",
+  "type": "function",
+  "name": "sendDaoPayment",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "bool"
+    }
+  ],
+  "gas": 49996
+},
+{
+  "stateMutability": "nonpayable",
+  "type": "function",
+  "name": "permit",
+  "inputs": [
+    {
+      "name": "owner",
+      "type": "address"
+    },
+    {
+      "name": "spender",
+      "type": "address"
+    },
+    {
+      "name": "amount",
+      "type": "uint256"
+    },
+    {
+      "name": "expiry",
+      "type": "uint256"
+    },
+    {
+      "name": "signature",
+      "type": "bytes"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "bool"
+    }
+  ],
+  "gas": 91554
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "allowance",
+  "inputs": [
+    {
+      "name": "arg0",
+      "type": "address"
+    },
+    {
+      "name": "arg1",
+      "type": "address"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "uint256"
+    }
+  ],
+  "gas": 3508
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "balanceOf",
+  "inputs": [
+    {
+      "name": "arg0",
+      "type": "address"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "uint256"
+    }
+  ],
+  "gas": 3323
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "totalSupply",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "uint256"
+    }
+  ],
+  "gas": 3138
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "boopedAmount",
+  "inputs": [
+    {
+      "name": "arg0",
+      "type": "address"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "uint256"
+    }
+  ],
+  "gas": 3383
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "totalBooped",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "uint256"
+    }
+  ],
+  "gas": 3198
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "inPoolSince",
+  "inputs": [
+    {
+      "name": "arg0",
+      "type": "address"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "uint256"
+    }
+  ],
+  "gas": 3443
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "outstandingOf",
+  "inputs": [
+    {
+      "name": "arg0",
+      "type": "address"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "uint256"
+    }
+  ],
+  "gas": 3473
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "totalOutstanding",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "uint256"
+    }
+  ],
+  "gas": 3288
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "totalRevenue",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "uint256"
+    }
+  ],
+  "gas": 3318
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "daoFeesAccrued",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "uint256"
+    }
+  ],
+  "gas": 3348
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "feeBPS",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "uint256"
+    }
+  ],
+  "gas": 3378
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "daoFeeBPS",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "uint256"
+    }
+  ],
+  "gas": 3408
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "owner",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "address"
+    }
+  ],
+  "gas": 3438
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "swapper",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "address"
+    }
+  ],
+  "gas": 3468
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "dao",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "address"
+    }
+  ],
+  "gas": 3498
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "feeController",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "address"
+    }
+  ],
+  "gas": 3528
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "paymentsReceived",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "uint256"
+    }
+  ],
+  "gas": 3558
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "nonces",
+  "inputs": [
+    {
+      "name": "arg0",
+      "type": "address"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "type": "uint256"
+    }
+  ],
+  "gas": 3803
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "DOMAIN_SEPARATOR",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "bytes32"
+    }
+  ],
+  "gas": 3618
+},
+{
+  "stateMutability": "view",
+  "type": "function",
+  "name": "BASE_TOKEN",
+  "inputs": [],
+  "outputs": [
+    {
+      "name": "",
+      "type": "address"
+    }
+  ],
+  "gas": 3648
+}
+]

@@ -12,11 +12,11 @@ const theme = extendTheme({
   },
 });
 
-export default function WoofyApp({ Component, pageProps }) {
+export default function BooperApp({ Component, pageProps }) {
   return (
     <PlausibleProvider
-      domain="woofy.finance"
-      customDomain="https://analytics.nymm.app"
+      domain="booper.finance"
+      customDomain="https://booper.finance"
       selfHosted
     >
       <ChakraProvider theme={theme}>
