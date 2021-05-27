@@ -384,7 +384,7 @@ export default function Home() {
                     </Box>
                     <Box>
                       <Text>
-                        by <Link href="https://yearn.finance">🔵</Link> and mak.eth with 💙
+                        by mak.eth with 💙. Special thanks to <Link href="https://yearn.finance">🔵</Link>.
                       </Text>
                     </Box>
                   </HStack>
