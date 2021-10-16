@@ -8,6 +8,6 @@ module.exports = {
       "master",
     BLOCKNATIVE_KEY: "59252a36-bc22-4f85-9f95-86fbebd7fce0",
     WEB3_PROVIDER_HTTPS:
-      "https://bsc-dataseed4.binance.org/",
+      "https://matic-mainnet.chainstacklabs.com/",
   },
 };

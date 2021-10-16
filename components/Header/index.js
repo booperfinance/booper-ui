@@ -14,8 +14,8 @@ import abiErc20 from "../../abi/erc20.json";
 import abiBoop from "../../abi/boop.json";
 import { formatUnits } from "../../helpers/units";
 
-const IDEX = "0x0856978F7fFff0a2471B4520E3521c4B3343e36f";
-const BOOP = "0x890E894F923CFa1Dad0E7da5AD37302b59000696";
+const IDEX = "0x9Cb74C8032b007466865f060ad2c46145d45553D";
+const BOOP = "0xB161009812BE9A9f50005A06f613AFf002ff0ce8";
 
 export default function Header() {
   const { active, activate, deactivate, account, pending, library } = useWeb3();

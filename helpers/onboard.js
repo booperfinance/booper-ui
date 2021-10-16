@@ -5,7 +5,7 @@ import { Web3Provider } from "@ethersproject/providers";
 
 import { Web3Context } from "./web3";
 
-const NetworkId = 56;
+const NetworkId = 137;
 const rpcUrl = process.env.WEB3_PROVIDER_HTTPS;
 
 const wallets = [
@@ -13,7 +13,7 @@ const wallets = [
   {
     walletName: "walletConnect",
     rpc: {
-      56: rpcUrl,
+      137: rpcUrl,
     },
   },
   {

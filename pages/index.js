@@ -30,8 +30,8 @@ import abiBoop from "../abi/boop.json";
 import NumericInput from "../components/NumericInput";
 import { usePlausible } from "next-plausible";
 
-const IDEX = "0x0856978F7fFff0a2471B4520E3521c4B3343e36f";
-const BOOP = "0x890E894F923CFa1Dad0E7da5AD37302b59000696";
+const IDEX = "0x9Cb74C8032b007466865f060ad2c46145d45553D";
+const BOOP = "0xB161009812BE9A9f50005A06f613AFf002ff0ce8";
 
 const TEN = new BigNumber(10);
 const MAX = new BigNumber(2).pow(256).minus(1);
