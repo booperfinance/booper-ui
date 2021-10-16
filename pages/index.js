@@ -212,13 +212,30 @@ export default function Home() {
   return (
     <Box minH="100vh" color="white">
       <Head>
-        <title>booper</title>
+        <title>Booper.finance</title>
       </Head>
       <Stack spacing={10}>
         <Header />
         <Center>
           <Container>
             <Stack>
+            <Box
+                bgColor="red.500"
+                p="5"
+                w="100%"
+                maxW="lg"
+                borderRadius="8"
+              >
+                <Center>
+                  <HStack>
+                    <Text fontSize="lm">
+                      <span>High Risk Warning: Booper Finance runs on <Link href="https://github.com/booperfinance/booper">un-audited code</Link>.
+                      You may lose any amount invested in the contracts.
+                      Proceed at your own risk.</span>
+                    </Text>
+                  </HStack>
+                </Center>
+              </Box>
               <Box
                 bgColor="whiteAlpha.600"
                 p="5"
